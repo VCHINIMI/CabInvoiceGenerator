@@ -18,4 +18,8 @@ public class InvoiceService {
 		}
 		return totalFare;
 	}
+
+	public InvoiceSummary calculateFareInvoiceSummary(Ride[] rides) {
+		return new InvoiceSummary(calculateFare(rides), rides.length);
+	}
 }
