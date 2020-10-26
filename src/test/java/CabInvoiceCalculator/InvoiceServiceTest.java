@@ -27,4 +27,15 @@ public class InvoiceServiceTest {
 		double fare = invoiceService.calculateFare(rides);
 		assertEquals(106, fare, 0.0);
 	}
+	
+	@Test
+	public void EnhancedInvoice() {
+		InvoiceSummary invoiceSummary = new InvoiceSummary(106,3);
+		Ride[] rides = { new Ride(2.0,5),
+				 new Ride(3.0, 5),
+				 new Ride(4.0, 6)
+			   };
+		InvoiceSummary actualSummary = invoiceService.calculateFareInvoiceSummary(rides);
+		assertEquals(invoiceSummary, actualSummary);
+	}
 }
