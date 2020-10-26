@@ -38,4 +38,16 @@ public class InvoiceServiceTest {
 		InvoiceSummary actualSummary = invoiceService.calculateFareInvoiceSummary(rides);
 		assertEquals(invoiceSummary, actualSummary);
 	}
+	
+	@Test
+	public void InvoiceSummaryFromRidesRepositoryWithUserID() {
+		InvoiceSummary invoiceSummary = new InvoiceSummary(106,3);
+		Ride[] rides = { new Ride(2.0,5),
+				 new Ride(3.0, 5),
+				 new Ride(4.0, 6)
+			   };
+		invoiceService.addRides("Vinay", rides);
+		assertEquals(invoiceSummary, invoiceService.getInvoiceFromUserId("Vinay"));
+	}
 }
+
